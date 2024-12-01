@@ -1,2 +1,2 @@
 # tic-tac-toe
-This application gets a picture of a tic-tac-toe game as input and it recognises the state of the game and recommends the next step for the player.
+This application generates a picture of a tic-tac-toe game step by step as input and processes the state of the game after every step until someone wins, or it's a tie.
