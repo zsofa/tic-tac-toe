@@ -25,15 +25,3 @@ class GameProcessor:
             print(f"The winner is {self.winner}!")
         else:
             print("The game is a tie!")
-
-
-if __name__ == "__main__":
-    from GameGenerator import GameGenerator
-
-    # Generate game
-    generator = GameGenerator()
-    winner = generator.simulate_game()
-
-    # Process moves
-    processor = GameProcessor(generator.get_moves_log(), winner)
-    processor.analyze_game()
