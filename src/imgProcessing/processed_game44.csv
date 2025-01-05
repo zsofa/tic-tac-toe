@@ -1,0 +1,10 @@
+Position,Value
+top-left,empty
+top-center,O
+top-right,X
+middle-left,X
+middle-center,O
+middle-right,empty
+bottom-left,O
+bottom-center,O
+bottom-right,X

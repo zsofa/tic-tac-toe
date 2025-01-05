@@ -1,0 +1,9 @@
+top-left,X
+top-right,O
+middle-left,X
+bottom-right,O
+bottom-center,X
+bottom-left,O
+middle-right,X
+middle-center,O
+top-center,empty
