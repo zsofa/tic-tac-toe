@@ -100,7 +100,6 @@ class GameProcessor:
             print("Original positions:")
             print(original_positions)
 
-            # Compare positions
             if positions == original_positions:
                 analysis_status = "Success"
             else:

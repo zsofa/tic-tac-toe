@@ -3,8 +3,8 @@ top-left,O
 top-center,O
 top-right,O
 middle-left,X
-middle-center,X
-middle-right,O
-bottom-left,empty
-bottom-center,X
-bottom-right,empty
+middle-center,empty
+middle-right,X
+bottom-left,O
+bottom-center,empty
+bottom-right,X
