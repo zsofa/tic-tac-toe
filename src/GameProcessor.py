@@ -22,19 +22,17 @@ class GameProcessor:
 
             _, binary = cv2.threshold(gray, 200, 255, cv2.THRESH_BINARY_INV)
 
-            kernel = np.ones((2, 2), np.uint8)  # Smaller kernel size
+            kernel = np.ones((2, 2), np.uint8)
             grid_removed = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
 
             debug_binary_path = os.path.join(self.image_processing_folder, f"binary_{game_file}")
             cv2.imwrite(debug_binary_path, grid_removed)
             print(f"Binary image saved to {debug_binary_path}")
 
-            # Detect Contours
             contours, _ = cv2.findContours(grid_removed, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
             positions = {f"{row}-{col}": "empty" for row in ["top", "middle", "bottom"] for col in
                          ["left", "center", "right"]}
 
-            # Debugging: Save intermediate image with contours
             debug_contours_image = img.copy()
             cv2.drawContours(debug_contours_image, contours, -1, (255, 0, 0), 2)
             debug_contours_path = os.path.join(self.image_processing_folder, f"contours_{game_file}")
@@ -53,17 +51,17 @@ class GameProcessor:
                     #print(f"Skipping contour at x={x}, y={y} because it covers the full grid.")
                     continue
 
-                row = min(max(cy // (self.HEIGHT // 3), 0), 2)  # Ensure row is between 0 and 2
-                col = min(max(cx // (self.WIDTH // 3), 0), 2)  # Ensure col is between 0 and 2
+                row = min(max(cy // (self.HEIGHT // 3), 0), 2)
+                col = min(max(cx // (self.WIDTH // 3), 0), 2)
 
                 pos_key = ["top", "middle", "bottom"][row] + "-" + ["left", "center", "right"][col]
 
                 if pos_key == "middle-center":
                     #print(f"Processing potential middle-center contour at x={x}, y={y}.")
-                    if area < 50 or area > 6000:  # Adjusted area range for middle-center
+                    if area < 50 or area > 6000:
                         #print(f"Skipping contour at x={x}, y={y} for middle-center due to area ({area}).")
                         continue
-                    if aspect_ratio < 0.7 or aspect_ratio > 1.3:  # Adjusted aspect ratio for middle-center
+                    if aspect_ratio < 0.7 or aspect_ratio > 1.3:
                         #print(f"Skipping contour at x={x}, y={y} for middle-center due to aspect ratio ({aspect_ratio:.2f}).")
                         continue
 

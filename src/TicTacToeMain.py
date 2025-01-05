@@ -3,7 +3,6 @@ from GameGenerator import GameGenerator
 from GameProcessor import GameProcessor
 
 def clear_folders():
-    """Deletes all files in the games, imgProcessing, and results folders."""
     folders = ["games", "imgProcessing", "results"]
     for folder in folders:
         if os.path.exists(folder):
